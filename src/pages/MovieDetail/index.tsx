@@ -1,6 +1,6 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { Box, Button, Container } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { movies } from '@api/mock'
@@ -30,7 +30,7 @@ export const MovieDetailPage = () => {
   const { id } = useParams<{ id: string }>()
   const [movie, setMovie] = useState<MovieDetail | null>(null)
 
-  useEffect(() => {
+  useMemo(() => {
     const foundMovie = movies.find((item) => String(item.id) === id)
     setMovie(foundMovie || null)
   }, [id])
